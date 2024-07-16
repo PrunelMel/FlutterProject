@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Translator',
       theme: ThemeData(
         
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white, ),
@@ -158,6 +158,7 @@ class _FieldState extends State<Field> {
         body:Center(
           
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Row(
                 
@@ -170,8 +171,10 @@ class _FieldState extends State<Field> {
                   dropdown2,
                 ],
               ),
+              SizedBox(width:50, height:50,),
+
               SizedBox(
-                width: 250,
+                width: 450,
                 child: TextField(
                   controller: controller,
                   decoration: const InputDecoration(
@@ -190,7 +193,8 @@ class _FieldState extends State<Field> {
                   
                   },
                   maxLength: 100,
-                  maxLengthEnforcement: MaxLengthEnforcement.enforced
+                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                  maxLines: 5,
                   
                 ),
               ),

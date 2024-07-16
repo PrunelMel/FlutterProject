@@ -18,7 +18,7 @@ class _MainBlocState extends State<MainBloc> {
   Widget build (BuildContext context){
 
     return SizedBox(
-      width:100, 
+      width:450, 
       child: Column(
         children:< Widget>[Text(widget.text , style: TextStyle(color: Colors.white),)],
       ),
