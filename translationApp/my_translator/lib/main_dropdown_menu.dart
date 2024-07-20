@@ -2,7 +2,12 @@
 
 enum MainLangLabel {
   french('French', 'fr'),
-  english('English', 'en');
+  english('English', 'en'),
+  spanish('Spanish', 'es'),
+  chinese('Chinese', 'zh-cn'),
+  german('German', 'de');
+
+
   const MainLangLabel(this.name, this.code);
   final String name;
   final String code;
