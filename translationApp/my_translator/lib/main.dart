@@ -87,18 +87,21 @@ class _FieldState extends State<Field> {
         print(err);
       });
     });
-
-  
-    //}
-
-    
   }
+
   
   String? getText(){
     return textToTranslate;
   }
   @override
   Widget build(BuildContext context){
+
+    if (controller.text.isEmpty){
+      setState(() {
+        outText
+         = "";
+      });
+    }
 
     Widget dropdown1 = DropdownMenu<MainLangLabel>(
     initialSelection: MainLangLabel.french,
@@ -194,6 +197,7 @@ class _FieldState extends State<Field> {
                       style: const TextStyle(color: Colors.white),
                       onChanged: (value) => {setState(() {
                         textToTranslate = value;
+                        print(value);
                         translatedText(textToTranslate, mainLang, distLang);
                       })
                       
