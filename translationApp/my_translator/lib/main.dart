@@ -79,7 +79,7 @@ class _FieldState extends State<Field> {
       setState(() {
         outText = value.text;
       });
-      print(value);
+      //print(value);
     })
     .catchError((err){
       setState(() {
@@ -160,10 +160,13 @@ class _FieldState extends State<Field> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text("TRANSLATOR", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize:35, letterSpacing:6),),
+              SizedBox(height: 50,),
               Row(
                 
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                
                   dropdown1,
                   SizedBox(width: 100,),
                   Icon(Icons.arrow_right_alt_outlined, color: Colors.white),
@@ -173,32 +176,38 @@ class _FieldState extends State<Field> {
               ),
               SizedBox(width:50, height:50,),
 
-              SizedBox(
-                width: 450,
-                child: TextField(
-                  controller: controller,
-                  decoration: const InputDecoration(
-                  label: Text(''),
-                  labelStyle: TextStyle(color: Colors.white),
-                  border: OutlineInputBorder(borderSide: BorderSide(width:1.0, color:  Colors.white, style: BorderStyle.solid)),
-                  floatingLabelAlignment: FloatingLabelAlignment.start,
-                  filled: true,
-                  fillColor: Color.fromARGB(255, 22, 22, 22),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 450,
+                    child: TextField(
+                      controller: controller,
+                      decoration: const InputDecoration(
+                      label: Text(''),
+                      labelStyle: TextStyle(color: Colors.white),
+                      border: OutlineInputBorder(borderSide: BorderSide(width:1.0, color:  Colors.white, style: BorderStyle.solid)),
+                      floatingLabelAlignment: FloatingLabelAlignment.start,
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 22, 22, 22),
+                      ),
+                      style: const TextStyle(color: Colors.white),
+                      onChanged: (value) => {setState(() {
+                        textToTranslate = value;
+                        translatedText(textToTranslate, mainLang, distLang);
+                      })
+                      
+                      },
+                      maxLength: 100,
+                      maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                      maxLines: 5,
+                      
+                    ),
                   ),
-                  style: const TextStyle(color: Colors.white),
-                  onChanged: (value) => {setState(() {
-                    textToTranslate = value;
-                    translatedText(textToTranslate, mainLang, distLang);
-                  })
-                  
-                  },
-                  maxLength: 100,
-                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                  maxLines: 5,
-                  
-                ),
+                  MainBloc(text: outText)
+
+                ],
               ),
-              MainBloc(text: outText)
               ],
           ),
         ),
