@@ -18,15 +18,16 @@ class _MainBlocState extends State<MainBloc> {
   Widget build (BuildContext context){
 
     return Card(
+      margin: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 24),
       color: Color.fromARGB(255, 22, 22, 22),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(5.0),
         side: const BorderSide(color: Color.fromARGB(255, 68, 68, 68), width: 1.0),
 
       ),
       child: SizedBox(
         width:450,
-        height: 160, 
+        height: 145, 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children:< Widget>[Text(widget.text , style: TextStyle(color: Colors.white)),],
