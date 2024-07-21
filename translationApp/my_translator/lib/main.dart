@@ -135,7 +135,7 @@ class _FieldState extends State<Field> {
         setState(() {
         distLang = lang!.code;
         });
-        
+        translatedText(outText, mainLang, distLang);
       },
       dropdownMenuEntries: MainLangLabel.values.map<DropdownMenuEntry<MainLangLabel>>(
         (MainLangLabel lang){
