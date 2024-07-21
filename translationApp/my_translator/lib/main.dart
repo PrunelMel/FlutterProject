@@ -96,6 +96,10 @@ class _FieldState extends State<Field> {
   @override
   Widget build(BuildContext context){
 
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    double screenHeight = MediaQuery.of(context).size.height;
+
     if (controller.text.isEmpty){
       setState(() {
         outText
@@ -150,74 +154,81 @@ class _FieldState extends State<Field> {
     
     );
     
-    return Scaffold(
-      appBar: AppBar(
-        
-        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-        title: Text('', style: const TextStyle(color: Colors.white, ),),
-        centerTitle: true
-      ),
-      body: Scaffold(
-        body:Center(
+    return SizedBox(
+      width: screenWidth,
+      height: screenHeight,
+      child: Scaffold(
+        appBar: AppBar(
           
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text("TRANSLATOR", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize:35, letterSpacing:6),),
-              SizedBox(height: 50,),
-              Row(
-                
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                
-                  dropdown1,
-                  SizedBox(width: 100,),
-                  Icon(Icons.arrow_right_alt_outlined, color: Colors.white),
-                  SizedBox(width: 100,),
-                  dropdown2,
-                ],
-              ),
-              SizedBox(width:50, height:50,),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 450,
-                    child: TextField(
-                      controller: controller,
-                      decoration: const InputDecoration(
-                      label: Text(''),
-                      labelStyle: TextStyle(color: Colors.white),
-                      border: OutlineInputBorder(borderSide: BorderSide(width:1.0, color:  Colors.white, style: BorderStyle.solid)),
-                      floatingLabelAlignment: FloatingLabelAlignment.start,
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 22, 22, 22),
-                      ),
-                      style: const TextStyle(color: Colors.white),
-                      onChanged: (value) => {setState(() {
-                        textToTranslate = value;
-                        print(value);
-                        translatedText(textToTranslate, mainLang, distLang);
-                      })
-                      
-                      },
-                      maxLength: 100,
-                      maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                      maxLines: 5,
-                      
-                    ),
-                  ),
-                  MainBloc(text: outText)
-
-                ],
-              ),
-              ],
-          ),
+          backgroundColor: const Color.fromARGB(255, 22, 22, 22),
+          title: Text('', style: const TextStyle(color: Colors.white, ),),
+          centerTitle: true
         ),
-        backgroundColor:  Color.fromARGB(255, 22, 22, 22),
-      ),
+        body: Scaffold(
+          body:Center(
+            
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("TRANSLATOR", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize:35, letterSpacing:6),),
+                SizedBox(height: 50,),
+                Row(
+                  
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                  
+                    dropdown1,
+                    SizedBox(width: screenWidth/10,),
+                    Icon(Icons.arrow_right_alt_outlined, color: Colors.white),
+                    SizedBox(width: screenWidth/10,),
+                    dropdown2,
+                  ],
+                ),
+                SizedBox(width:50, height:50,),
       
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SafeArea(
+                      
+                      child: SizedBox(
+                        width: screenWidth/3,
+                        child: TextField(
+                          controller: controller,
+                          decoration: const InputDecoration(
+                          label: Text(''),
+                          labelStyle: TextStyle(color: Colors.white),
+                          border: OutlineInputBorder(borderSide: BorderSide(width:1.0, color:  Colors.white, style: BorderStyle.solid)),
+                          floatingLabelAlignment: FloatingLabelAlignment.start,
+                          filled: true,
+                          fillColor: Color.fromARGB(255, 22, 22, 22),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                          onChanged: (value) => {setState(() {
+                            textToTranslate = value;
+                            print(value);
+                            translatedText(textToTranslate, mainLang, distLang);
+                          })
+                          
+                          },
+                          maxLength: 100,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                          maxLines: 5,
+                          
+                        ),
+                      ),
+                    ),
+                    MainBloc(text: outText)
+      
+                  ],
+                ),
+                ],
+            ),
+          ),
+          backgroundColor:  Color.fromARGB(255, 22, 22, 22),
+        ),
+        
+      ),
     );
   }
 }

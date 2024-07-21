@@ -26,7 +26,7 @@ class _MainBlocState extends State<MainBloc> {
 
       ),
       child: SizedBox(
-        width:450,
+        width:MediaQuery.of(context).size.width/3,
         height: 145, 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
