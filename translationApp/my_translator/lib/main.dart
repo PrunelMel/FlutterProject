@@ -102,8 +102,8 @@ class _FieldState extends State<Field> {
 
     if (controller.text.isEmpty){
       setState(() {
-        outText
-         = "";
+        outText = "";
+        print(screenHeight);
       });
     }
 
@@ -207,6 +207,7 @@ class _FieldState extends State<Field> {
                           onChanged: (value) => {setState(() {
                             textToTranslate = value;
                             print(value);
+                            
                             translatedText(textToTranslate, mainLang, distLang);
                           })
                           

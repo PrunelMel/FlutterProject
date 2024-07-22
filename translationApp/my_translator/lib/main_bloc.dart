@@ -27,10 +27,10 @@ class _MainBlocState extends State<MainBloc> {
       ),
       child: SizedBox(
         width:MediaQuery.of(context).size.width/3,
-        height: 145, 
+        height: 145,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children:< Widget>[Text(widget.text , style: TextStyle(color: Colors.white)),],
+          children:< Widget>[SizedBox(height: 10,), Text(widget.text , style: TextStyle(color: Colors.white, fontSize: 16), textAlign: TextAlign.justify,),],
         ),
       ),
     );
