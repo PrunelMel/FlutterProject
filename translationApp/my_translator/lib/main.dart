@@ -103,7 +103,6 @@ class _FieldState extends State<Field> {
     if (controller.text.isEmpty){
       setState(() {
         outText = "";
-        print(screenHeight);
       });
     }
 
