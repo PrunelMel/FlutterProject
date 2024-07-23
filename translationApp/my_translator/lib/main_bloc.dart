@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MainBloc extends StatefulWidget{
    
@@ -36,10 +37,22 @@ class _MainBlocState extends State<MainBloc> {
               style: TextStyle(color: Colors.white, fontSize: 16),
               textAlign: TextAlign.justify,
             ),
-            Card(margin: EdgeInsetsDirectional.fromSTEB(340, 70, 0, 0), color: Color.fromARGB(255, 22, 22, 22), child: IconButton(iconSize: 10, alignment: Alignment.bottomRight, onPressed: (){}, icon: Icon(Icons.copy, color: Colors.white,)),),
+            Card(
+              elevation: 0, 
+              margin: EdgeInsetsDirectional.fromSTEB(330, 70, 0, 0),
+              color: Color.fromARGB(255, 22, 22, 22),
+              child: IconButton(iconSize: 10, alignment: Alignment.bottomCenter,
+              onPressed: (){
+                Clipboard.setData(ClipboardData(text: widget.text));
+              },
+              icon: Icon(
+                Icons.copy, 
+                color: Colors.white,
+              ),),
+            ),
           ],
         ),
-      ),
+      )
     );
  }
 }
