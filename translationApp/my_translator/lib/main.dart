@@ -38,6 +38,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   
+  ClipboardData? data;
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +81,7 @@ class _FieldState extends State<Field> {
       setState(() {
         outText = value.text;
       });
-      //print(value);
+      print(value);
     })
     .catchError((err){
       setState(() {
