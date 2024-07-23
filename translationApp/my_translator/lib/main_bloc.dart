@@ -30,7 +30,14 @@ class _MainBlocState extends State<MainBloc> {
         height: 145,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children:< Widget>[SizedBox(height: 10,), Text(widget.text , style: TextStyle(color: Colors.white, fontSize: 16), textAlign: TextAlign.justify,),],
+          children:< Widget>[
+            SizedBox(height: 10,),
+            Text(widget.text ,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.justify,
+            ),
+            Card(margin: EdgeInsetsDirectional.fromSTEB(340, 70, 0, 0), color: Color.fromARGB(255, 22, 22, 22), child: IconButton(iconSize: 10, alignment: Alignment.bottomRight, onPressed: (){}, icon: Icon(Icons.copy, color: Colors.white,)),),
+          ],
         ),
       ),
     );
