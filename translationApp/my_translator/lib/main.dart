@@ -197,20 +197,22 @@ class _FieldState extends State<Field> {
                         child: TextField(
                           controller: controller,
                           decoration: const InputDecoration(
-                          label: Text(''),
-                          labelStyle: TextStyle(color: Colors.white),
-                          border: OutlineInputBorder(borderSide: BorderSide(width:1.0, color:  Colors.white, style: BorderStyle.solid)),
-                          floatingLabelAlignment: FloatingLabelAlignment.start,
-                          filled: true,
-                          fillColor: Color.fromARGB(255, 22, 22, 22),
+                            //labelText: 'Enter text',
+                            hintText: 'Enter text ...',
+                            hintStyle: TextStyle(color: Color.fromARGB(255, 49, 48, 48)),
+                            labelStyle: TextStyle(color: Colors.white),
+                            border: OutlineInputBorder(borderSide: BorderSide(width:1.0, color:  Colors.white, style: BorderStyle.solid)),
+                            floatingLabelAlignment: FloatingLabelAlignment.start,
+                            filled: true,
+                            fillColor: Color.fromARGB(255, 22, 22, 22),
                           ),
                           style: const TextStyle(color: Colors.white),
-                          onChanged: (value) => {setState(() {
-                            textToTranslate = value;
-                            print(value);
-                            
-                            translatedText(textToTranslate, mainLang, distLang);
-                          })
+                          onChanged: (value) => {
+                            setState(() {
+                              textToTranslate = value;
+                              print(value);
+                              translatedText(textToTranslate, mainLang, distLang);
+                            })
                           
                           },
                           maxLength: 100,
