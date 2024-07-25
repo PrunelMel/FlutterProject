@@ -198,7 +198,7 @@ class _FieldState extends State<Field> {
                           controller: controller,
                           decoration: const InputDecoration(
                             //labelText: 'Enter text',
-                            hintText: 'Enter text...',
+                            hintText: 'Enter text ...',
                             hintStyle: TextStyle(color: Color.fromARGB(255, 49, 48, 48)),
                             labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(borderSide: BorderSide(width:1.0, color:  Colors.white, style: BorderStyle.solid)),
