@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:newsapp/data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
        
         title: Text(widget.title),
       ),
-      body: const Column(
+      body:  Column(
         children: [
           Data(),
         ],
@@ -56,11 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class Data extends StatefulWidget {
-  
-  const Data({super.key});
+class _DataState extends State<Data> {
 
-  final int statusCode = 0;
+  Map<dynamic, dynamic> parsedData = {}; 
 
   void requestData()  async{
     var client = http.Client();
@@ -68,22 +67,17 @@ class Data extends StatefulWidget {
       var response = await client.get(
         Uri.https('newsapi.org', '/v2/top-headlines', {'q':'google', 'apiKey':'d7f01d66b43045df839dca64622b84ea'}, ),
       );
-      var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      //var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      setState(() {
+        parsedData = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      });
       //var uri = Uri.parse(decodedResponse['uri']);
       print(response.statusCode);
-      print(decodedResponse);
-      
     }
     finally {
       client.close();
     }
   }
-
-  @override
-  State<Data> createState() => _DataState();
-}
-
-class _DataState extends State<Data> {
   @override
   Widget build(BuildContext context) {
     widget.requestData();
