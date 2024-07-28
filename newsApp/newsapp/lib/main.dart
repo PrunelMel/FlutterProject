@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -44,7 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
        
         title: Text(widget.title),
       ),
-      body: const Text('Hello'),
+      body: const Column(
+        children: [
+          Data(),
+        ],
+      ),
     );
     
   }
@@ -56,8 +62,21 @@ class Data extends StatefulWidget {
 
   final int statusCode = 0;
 
-  void requestData() {
-
+  void requestData()  async{
+    var client = http.Client();
+    try {
+      var response = await client.get(
+        Uri.https('newsapi.org', '/v2/top-headlines', {'q':'google', 'apiKey':'d7f01d66b43045df839dca64622b84ea'}, ),
+      );
+      var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      //var uri = Uri.parse(decodedResponse['uri']);
+      print(response.statusCode);
+      print(decodedResponse);
+      
+    }
+    finally {
+      client.close();
+    }
   }
 
   @override
@@ -67,6 +86,7 @@ class Data extends StatefulWidget {
 class _DataState extends State<Data> {
   @override
   Widget build(BuildContext context) {
+    widget.requestData();
     return const Text('Hello');
   }
 }
