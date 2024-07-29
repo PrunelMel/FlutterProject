@@ -4,28 +4,9 @@ import 'dart:convert';
 
 class Data extends StatefulWidget {
   
-  Data({super.key});
+  const Data({super.key});
 
-  final int statusCode = 0;
-
-  final Map<dynamic, dynamic> parsedData = {}; 
-
-  void requestData()  async{
-    var client = http.Client();
-    try {
-      var response = await client.get(
-        Uri.https('newsapi.org', '/v2/top-headlines', {'q':'google', 'apiKey':'d7f01d66b43045df839dca64622b84ea'}, ),
-      );
-      
-      //var uri = Uri.parse(decodedResponse['uri']);
-      print(response.statusCode);
-      print(response.body);
-
-    }
-    finally {
-      client.close();
-    }
-  }
+  
 
   @override
   State<Data> createState() => _DataState();
@@ -33,7 +14,9 @@ class Data extends StatefulWidget {
 
 class _DataState extends State<Data> {
 
-  Map<dynamic, dynamic> parsedData = {}; 
+  Map<dynamic, dynamic> bruteData = {};
+
+  Map<int, String> articles = {};
 
   void requestData()  async{
     var client = http.Client();
@@ -43,18 +26,36 @@ class _DataState extends State<Data> {
       );
       //var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       setState(() {
-        parsedData = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+        bruteData = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       });
       //var uri = Uri.parse(decodedResponse['uri']);
       print(response.statusCode);
+
+      print(bruteData['totalResults']);
+
+    } catch (e) {
+      print(e);
     }
     finally {
       client.close();
     }
   }
+
+
+  void extractor(){
+    bruteData['articles'].forEach((article) {
+      int i = 0;
+      setState(() {
+        articles[i] = article;
+        i++;
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    widget.requestData();
+    requestData();
     return const Text('Hello');
   }
 }
+
+
