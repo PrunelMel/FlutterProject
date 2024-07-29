@@ -16,7 +16,7 @@ class _DataState extends State<Data> {
 
   Map<dynamic, dynamic> bruteData = {};
 
-  Map<String, String> articles = {};
+  Map<int, String> articles = {};
 
   void requestData()  async{
     var client = http.Client();
@@ -43,7 +43,13 @@ class _DataState extends State<Data> {
 
 
   void extractor(){
-
+    bruteData['articles'].forEach((article) {
+      int i = 0;
+      setState(() {
+        articles[i] = article;
+        i++;
+      });
+    });
   }
   @override
   Widget build(BuildContext context) {
