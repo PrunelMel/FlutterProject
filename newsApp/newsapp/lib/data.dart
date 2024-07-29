@@ -16,40 +16,57 @@ class _DataState extends State<Data> {
 
   Map<dynamic, dynamic> bruteData = {};
 
-  Map<int, String> articles = {};
+  Map<dynamic, dynamic> articles = {};
 
   void requestData()  async{
+    
     var client = http.Client();
+    
     try {
+      
       var response = await client.get(
         Uri.https('newsapi.org', '/v2/top-headlines', {'q':'google', 'apiKey':'d7f01d66b43045df839dca64622b84ea'}, ),
       );
-      //var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      
       setState(() {
+
         bruteData = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+        
       });
-      //var uri = Uri.parse(decodedResponse['uri']);
+      
       print(response.statusCode);
 
-      print(bruteData['totalResults']);
+      extractor();
+
+      print(articles);
 
     } catch (e) {
+      
       print(e);
+
     }
     finally {
+      
       client.close();
+    
     }
   }
-
+  
 
   void extractor(){
-    bruteData['articles'].forEach((article) {
-      int i = 0;
+    for(int i = 0; i < bruteData['articles'].length; i++){
       setState(() {
-        articles[i] = article;
-        i++;
+        articles[i] = bruteData['articles'][i];
+
       });
-    });
+    }
+
+    /*setState(() {
+      //articles = bruteData['articles'] as Map<dynamic, dynamic>;
+      print(articles);
+    });*/
+    print(bruteData['articles'].runtimeType);
+
   }
   @override
   Widget build(BuildContext context) {
