@@ -68,6 +68,11 @@ class _DataState extends State<Data> {
     print(bruteData['articles'].runtimeType);
 
   }
+
+
+  Map<dynamic, dynamic> getArticles() {
+    return articles;
+  }
   @override
   Widget build(BuildContext context) {
     requestData();
