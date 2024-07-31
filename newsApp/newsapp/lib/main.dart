@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:newsapp/article_view.dart';
 import 'package:newsapp/data.dart';
 
 void main() {
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body:  const Column(
         children: [
-          Data(),
+          ArticleView(),
         ],
       ),
     );
