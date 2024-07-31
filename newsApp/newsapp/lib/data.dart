@@ -73,6 +73,7 @@ class _DataState extends State<Data> {
   Map<dynamic, dynamic> getArticles() {
     return articles;
   }
+  
   @override
   Widget build(BuildContext context) {
     requestData();
