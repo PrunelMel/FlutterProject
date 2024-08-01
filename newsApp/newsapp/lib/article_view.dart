@@ -12,7 +12,7 @@ class _ArticleViewState extends State<ArticleView> {
 
   String urlImage = "https://assets2.cbsnewsstatic.com/hub/i/r/2024/07/29/5435082c-04b3-49bc-b2cd-e5c5463cd9fb/thumbnail/1200x630/28bde7b2f16fc95d1a963a7f1f4826c2/gettyimages-1676292735.jpg?v=8f1da8ceea4c14a7119ef5d6a2829966";
 
-  String title = "Du willst KI-Bots von deiner Website fernhalten? Achte auf diese wichtigen Dinge";
+  String title = "";
 
   String url = "";//url to article
 
