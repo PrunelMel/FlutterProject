@@ -20,53 +20,61 @@ class _ArticleViewState extends State<ArticleView> {
   Widget build(BuildContext context) {
     
     return  Container(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(5.0),
       width: MediaQuery.of(context).size.width/6,
-      height: MediaQuery.of(context).size.height/3,
+      height: MediaQuery.of(context).size.height/2.5,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, style: BorderStyle.solid, width: 1.0),
+        border: Border.all(color: Colors.grey, style: BorderStyle.solid, width: 1.0),
         borderRadius: BorderRadius.circular(10.0),
+        
       ),
       child: Column(
         children: <Widget> [
           
           Text(title, textAlign: TextAlign.center,style: const TextStyle(color: Colors.grey, fontSize:10), maxLines: 3,),
           
-          Expanded(
-            child: Image.network(
-              urlImage,
-              scale: 1,
-              frameBuilder: (BuildContext context, Widget child,
-                int? frame, bool wasSynchronouslyLoaded) {
-                if (wasSynchronouslyLoaded) {
-                  return child;
-                }
-                return AnimatedOpacity(
-                  opacity: frame == null ? 0 : 1,
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.easeOut,
-                  child: child,
-                );
-              },
-              loadingBuilder: (BuildContext context, Widget child,
-                ImageChunkEvent? loadingProgress) {
-                final totalBytes = loadingProgress?.expectedTotalBytes;
-                final bytesLoaded = loadingProgress?.cumulativeBytesLoaded;
-                if (totalBytes != null && bytesLoaded != null) {
-                  return CircularProgressIndicator(
-                    backgroundColor: Colors.white70,
-                    value: bytesLoaded / totalBytes,
-                    color: Colors.blue[900],
-                    strokeWidth: 5.0,
-                  );
-                } else {
-                  return child;
-                }
-              },
+          FractionallySizedBox(
+            widthFactor: 1,
+            heightFactor: 0.5,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Expanded(
+                child: Image.network(
+                  urlImage,
+                  scale: 1,
+                  frameBuilder: (BuildContext context, Widget child,
+                    int? frame, bool wasSynchronouslyLoaded) {
+                    if (wasSynchronouslyLoaded) {
+                      return child;
+                    }
+                    return AnimatedOpacity(
+                      opacity: frame == null ? 0 : 1,
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.easeOut,
+                      child: child,
+                    );
+                  },
+                  loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                    final totalBytes = loadingProgress?.expectedTotalBytes;
+                    final bytesLoaded = loadingProgress?.cumulativeBytesLoaded;
+                    if (totalBytes != null && bytesLoaded != null) {
+                      return CircularProgressIndicator(
+                        backgroundColor: Colors.white70,
+                        value: bytesLoaded / totalBytes,
+                        color: Colors.blue[900],
+                        strokeWidth: 5.0,
+                      );
+                    } else {
+                      return child;
+                    }
+                  },
+                ),
+              ),
             ),
           ),
           
-          ElevatedButton(
+          /*ElevatedButton(
             
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -75,7 +83,7 @@ class _ArticleViewState extends State<ArticleView> {
             ),
             child: const Text("Read"),
       
-          )
+          )*/
         
         ]
       ),
