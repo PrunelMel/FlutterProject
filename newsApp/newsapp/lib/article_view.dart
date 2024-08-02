@@ -12,7 +12,7 @@ class _ArticleViewState extends State<ArticleView> {
 
   String urlImage = "https://assets2.cbsnewsstatic.com/hub/i/r/2024/07/29/5435082c-04b3-49bc-b2cd-e5c5463cd9fb/thumbnail/1200x630/28bde7b2f16fc95d1a963a7f1f4826c2/gettyimages-1676292735.jpg?v=8f1da8ceea4c14a7119ef5d6a2829966";
 
-  String title = "";
+  String title = "Some Title";
 
   String url = "";//url to article
 
@@ -20,9 +20,9 @@ class _ArticleViewState extends State<ArticleView> {
   Widget build(BuildContext context) {
     
     return  Container(
-      padding: const EdgeInsets.all(5.0),
-      width: MediaQuery.of(context).size.width/6,
-      height: MediaQuery.of(context).size.height/2.5,
+      padding: const EdgeInsets.all(5.0,),
+      width: MediaQuery.of(context).size.width/5.5,
+      height: MediaQuery.of(context).size.height/2,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey, style: BorderStyle.solid, width: 1.0),
         borderRadius: BorderRadius.circular(10.0),
@@ -33,57 +33,18 @@ class _ArticleViewState extends State<ArticleView> {
           
           Text(title, textAlign: TextAlign.center,style: const TextStyle(color: Colors.grey, fontSize:10), maxLines: 3,),
           
-          FractionallySizedBox(
-            widthFactor: 1,
-            heightFactor: 0.5,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Expanded(
-                child: Image.network(
-                  urlImage,
-                  scale: 1,
-                  frameBuilder: (BuildContext context, Widget child,
-                    int? frame, bool wasSynchronouslyLoaded) {
-                    if (wasSynchronouslyLoaded) {
-                      return child;
-                    }
-                    return AnimatedOpacity(
-                      opacity: frame == null ? 0 : 1,
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeOut,
-                      child: child,
-                    );
-                  },
-                  loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                    final totalBytes = loadingProgress?.expectedTotalBytes;
-                    final bytesLoaded = loadingProgress?.cumulativeBytesLoaded;
-                    if (totalBytes != null && bytesLoaded != null) {
-                      return CircularProgressIndicator(
-                        backgroundColor: Colors.white70,
-                        value: bytesLoaded / totalBytes,
-                        color: Colors.blue[900],
-                        strokeWidth: 5.0,
-                      );
-                    } else {
-                      return child;
-                    }
-                  },
-                ),
-              ),
+          
+            
+          
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Image.network(
+              
+              urlImage,
+              scale: 1,
+                
             ),
           ),
-          
-          /*ElevatedButton(
-            
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlue,
-              
-            ),
-            child: const Text("Read"),
-      
-          )*/
         
         ]
       ),
