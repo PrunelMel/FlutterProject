@@ -16,6 +16,8 @@ class _ArticleViewState extends State<ArticleView> {
 
   String url = "";//url to article
 
+  String publishedAt = "2024-08-08T10:00:00Z";
+
   @override
   Widget build(BuildContext context) {
     
@@ -26,23 +28,50 @@ class _ArticleViewState extends State<ArticleView> {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey, style: BorderStyle.solid, width: 1.0),
         borderRadius: BorderRadius.circular(10.0),
+        boxShadow: List<BoxShadow>.from([
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ])
         
       ),
       child: Column(
         children: <Widget> [
           
-          Text(title, textAlign: TextAlign.center,style: const TextStyle(color: Colors.grey, fontSize:10), maxLines: 3,),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize:20.0),
+              maxLines: 3,
+            ),
+          ),
           
           
             
-          
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Image.network(
-              
-              urlImage,
-              scale: 1,
-                
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 115, 0, 0),
+            child: Column(
+              children: [
+                Text(
+                  publishedAt,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 5,),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.network(
+                    
+                    urlImage,
+                    scale: 1,
+                      
+                  ),
+                ),
+              ],
             ),
           ),
         
