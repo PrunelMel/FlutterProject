@@ -1,5 +1,23 @@
 import 'package:flutter/material.dart';
 
+class DefaultImg extends StatelessWidget {
+
+  const DefaultImg({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.black,
+      ),
+      child: IconButton(
+        icon: const Icon(Icons.newspaper, color: Colors.white,),
+        onPressed: () {},
+      )
+    );
+  }
+}
+
 class ArticleView extends StatefulWidget {
   
   const ArticleView({super.key});
@@ -10,13 +28,13 @@ class ArticleView extends StatefulWidget {
 
 class _ArticleViewState extends State<ArticleView> {
 
-  String urlImage = "https://assets2.cbsnewsstatic.com/hub/i/r/2024/07/29/5435082c-04b3-49bc-b2cd-e5c5463cd9fb/thumbnail/1200x630/28bde7b2f16fc95d1a963a7f1f4826c2/gettyimages-1676292735.jpg?v=8f1da8ceea4c14a7119ef5d6a2829966";
+  String urlImage = "";
 
-  String title = "Some Title";
+  String title = "";
 
   String url = "";//url to article
 
-  String publishedAt = "2024-08-08T10:00:00Z";
+  String publishedAt = "";
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +82,7 @@ class _ArticleViewState extends State<ArticleView> {
                 const SizedBox(height: 5,),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
-                  child: Image.network(
+                  child: urlImage == "" ? const DefaultImg() : Image.network(
                     
                     urlImage,
                     scale: 1,
@@ -80,4 +98,3 @@ class _ArticleViewState extends State<ArticleView> {
     );
   }
 }
-
