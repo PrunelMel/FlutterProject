@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MainBloc extends StatefulWidget{
    
@@ -16,7 +17,7 @@ class _MainBlocState extends State<MainBloc> {
 
   @override
   Widget build (BuildContext context){
-
+    
     return Card(
       margin: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 24),
       color: Color.fromARGB(255, 22, 22, 22),
@@ -30,9 +31,29 @@ class _MainBlocState extends State<MainBloc> {
         height: 145,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children:< Widget>[SizedBox(height: 10,), Text(widget.text , style: TextStyle(color: Colors.white, fontSize: 16), textAlign: TextAlign.justify,),],
+          children:< Widget>[
+            SizedBox(height: 10,),
+            Text(widget.text ,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.justify,
+            ),
+            /*IconButton(iconSize: 10, alignment: Alignment.center,
+              onPressed: (){
+                Clipboard.setData(ClipboardData(text: widget.text));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Copied to clipboard'),
+                  ),
+                );
+              },
+              icon: Icon(
+                Icons.copy, 
+                color: Colors.white,
+              ),
+            )*/
+          ],
         ),
-      ),
+      )
     );
  }
 }
