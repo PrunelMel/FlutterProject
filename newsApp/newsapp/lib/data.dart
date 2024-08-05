@@ -77,7 +77,7 @@ class _DataState extends State<Data> {
   @override
   Widget build(BuildContext context) {
     requestData();
-    return const Text('Hello');
+    return const Text('');
   }
 }
 

@@ -46,7 +46,8 @@ class _ArticleViewState extends State<ArticleView> {
         color: Color.fromARGB(255, 32, 32, 32),
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
       ),
-
+      
+      
       child: Stack(
 
         alignment:Alignment.center,
@@ -70,12 +71,13 @@ class _ArticleViewState extends State<ArticleView> {
               style: const TextStyle(color: Colors.white),
             ),
           ),
+
           Positioned(
             
             top: 150,
-            bottom: 40,
+            bottom: 20,
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(25.0),
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                 child: Image.network(
@@ -84,6 +86,18 @@ class _ArticleViewState extends State<ArticleView> {
                 ),
               ),
             )
+          ),
+
+          Positioned(
+            bottom: 0,
+            child: Container(
+              alignment: Alignment.bottomRight,
+              width: 200,
+              child: IconButton(
+                icon: const Icon(Icons.keyboard_arrow_right, color: Colors.white,),
+                onPressed: () {},
+              ),
+            ),
           )
         ],
       ),
