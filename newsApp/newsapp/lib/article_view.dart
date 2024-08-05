@@ -91,9 +91,10 @@ class _ArticleViewState extends State<ArticleView> {
           Positioned(
             bottom: 0,
             child: Container(
+              width: 250,
               alignment: Alignment.bottomRight,
-              width: 200,
               child: IconButton(
+                tooltip: 'Read',
                 icon: const Icon(Icons.keyboard_arrow_right, color: Colors.white,),
                 onPressed: () {},
               ),
