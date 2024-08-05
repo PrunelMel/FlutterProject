@@ -31,6 +31,7 @@ class _ArticleViewState extends State<ArticleView> {
 
   String publishedAt = "2021-01-01T00:00:00Z";
 
+
   @override
   Widget build(BuildContext context) {
     
@@ -55,7 +56,7 @@ class _ArticleViewState extends State<ArticleView> {
             width: 200,
             top:15,
             child: Text(
-              title,
+              title.length > 80 ? "${title.substring(0, 80)} ... ": title,
               textAlign: TextAlign.center,
               style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize:20.0),
               maxLines: 3,
