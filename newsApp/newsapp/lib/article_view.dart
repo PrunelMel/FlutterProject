@@ -25,11 +25,11 @@ class ArticleView extends StatefulWidget {
 
 class _ArticleViewState extends State<ArticleView> {
 
-  String urlImage = "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+  String urlImage = "https://t3n.de/news/wp-content/uploads/2024/07/Eiffelturm-alternativ-1.jpg";
 
-  String title = "Some Title";
+  String title = "Virtuelle Zeitreise durch Paris: Google Maps zeigt Sehenswürdigkeiten in historischer AR-Optik";
 
-  String url = "";//url to article
+  String url = "";
 
   String publishedAt = "2021-01-01T00:00:00Z";
 
@@ -54,6 +54,7 @@ class _ArticleViewState extends State<ArticleView> {
         children: <Widget>[
 
           Positioned(
+            width: 200,
             top:15,
             child: Text(
               title,
