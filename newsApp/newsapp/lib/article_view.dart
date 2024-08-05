@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class DefaultImg extends StatelessWidget {
 
@@ -27,15 +29,20 @@ class _ArticleViewState extends State<ArticleView> {
 
   String title = "Virtuelle Zeitreise durch Paris: Google Maps zeigt Sehenswürdigkeiten in historischer AR-Optik";
 
-  String url = "";
+  String url = "https://t3n.de/news/virtuelle-zeitreise-paris-google-maps-sehenswuerdigkeiten-historisch-ar-1638436/";
 
   String publishedAt = "2021-01-01T00:00:00Z";
 
+  Future<void> urlLauncher(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     
-    
+    Uri finalUrl = Uri.parse(url);
 
     return Container(
 
@@ -91,11 +98,14 @@ class _ArticleViewState extends State<ArticleView> {
           Positioned(
             bottom: 0,
             child: Container(
+              width: 250,
               alignment: Alignment.bottomRight,
-              width: 200,
               child: IconButton(
+                tooltip: 'Read',
                 icon: const Icon(Icons.keyboard_arrow_right, color: Colors.white,),
-                onPressed: () {},
+                onPressed: () {
+                  urlLauncher(finalUrl);
+                },
               ),
             ),
           )
