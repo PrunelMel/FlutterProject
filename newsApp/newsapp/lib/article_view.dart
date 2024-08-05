@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DefaultImg extends StatelessWidget {
 
@@ -65,20 +63,24 @@ class _ArticleViewState extends State<ArticleView> {
           ),
 
           Positioned(
-            top: 80,
+            top: 120,
             child: Text(
               publishedAt,
               style: const TextStyle(color: Colors.white),
             ),
           ),
           Positioned(
+            
             top: 150,
             bottom: 40,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-              child: Image.network(
-                urlImage,
-                scale: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                child: Image.network(
+                  urlImage,
+                  scale: 1,
+                ),
               ),
             )
           )
