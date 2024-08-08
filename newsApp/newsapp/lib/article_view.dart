@@ -8,9 +8,27 @@ class DefaultImg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    /*return IconButton(
       icon: const Icon(Icons.newspaper, color: Colors.white,),
       onPressed: () {},
+    );*/
+
+    return Container(
+
+      width: 300,
+      height: 250,
+
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 190, 66, 66),
+      ),
+      
+      child: Container(
+        width: 150,
+        height: 100,
+        decoration: const BoxDecoration(
+          color: Colors.blue
+        ),
+      ),
     );
   }
 }
