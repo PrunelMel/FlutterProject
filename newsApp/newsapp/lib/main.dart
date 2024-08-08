@@ -49,7 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body:   const Column(
         children: [
-          ArticleView(),
+          //ArticleView(),
+          DefaultImg()
           
           //Data()
           
