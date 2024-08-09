@@ -22,6 +22,7 @@ class DefaultImg extends StatelessWidget {
         color: Color.fromARGB(255, 190, 66, 66),
       ),
       
+      alignment: Alignment.topLeft,
       child: Container(
         width: 150,
         height: 100,
@@ -52,9 +53,12 @@ class _ArticleViewState extends State<ArticleView> {
   String publishedAt = "2021-01-01T00:00:00Z";
 
   Future<void> urlLauncher(Uri url) async {
-    if (!await launchUrl(url)) {
+    /*if (!await launchUrl(url)) {
       throw Exception('Could not launch $url');
-    }
+    }*/
+
+    await launchUrl(url).then((value) => Navigator.of(context).pop())
+    .catchError((err) => print(err));
   }
 
   @override
