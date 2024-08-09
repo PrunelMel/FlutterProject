@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -52,6 +53,8 @@ class _ArticleViewState extends State<ArticleView> {
 
   String publishedAt = "2021-01-01T00:00:00Z";
 
+  Color borderColor = const Color.fromARGB(255, 32, 32, 32);
+
   Future<void> urlLauncher(Uri url) async {
     /*if (!await launchUrl(url)) {
       throw Exception('Could not launch $url');
@@ -66,74 +69,88 @@ class _ArticleViewState extends State<ArticleView> {
     
     Uri finalUrl = Uri.parse(url);
 
-    return Container(
-
-      width: 250,
-      height: 350,
-
-      decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 32, 32, 32),
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-      ),
+    return MouseRegion(
+      onHover: (event) {
+        setState(() {
+          borderColor = const Color.fromARGB(255, 68, 68, 68);
+        });
+      },
+      onExit:(event) {
+        setState(() {
+          borderColor = const Color.fromARGB(255, 32, 32, 32);
+        });
+      },
+      child: Container(
       
+        width: 250,
+        height: 350,
+        //Color.fromARGB(255, 68, 68, 68)
+        decoration:  BoxDecoration(
+          border: Border.fromBorderSide(BorderSide(color: borderColor, width: 1.0)),
+          color: const Color.fromARGB(255, 32, 32, 32),
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+        ),
+        
+        
+        child: Stack(
       
-      child: Stack(
-
-        alignment:Alignment.center,
-        children: <Widget>[
-
-          Positioned(
-            width: 200,
-            top:15,
-            child: Text(
-              title.length > 80 ? "${title.substring(0, 80)} ... ": title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize:20.0),
-              maxLines: 3,
+          alignment:Alignment.center,
+          children: <Widget>[
+      
+            Positioned(
+              width: 200,
+              top:15,
+              child: Text(
+                title.length > 80 ? "${title.substring(0, 80)} ... ": title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize:20.0),
+                maxLines: 3,
+              ),
             ),
-          ),
-
-          Positioned(
-            top: 120,
-            child: Text(
-              publishedAt,
-              style: const TextStyle(color: Colors.white),
+      
+            Positioned(
+              top: 120,
+              child: Text(
+                publishedAt,
+                style: const TextStyle(color: Colors.white),
+              ),
             ),
-          ),
-
-          Positioned(
-            
-            top: 150,
-            bottom: 20,
-            child: Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                child: Image.network(
-                  urlImage,
-                  scale: 1,
+      
+            Positioned(
+              
+              top: 150,
+              bottom: 20,
+              child: Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  child: Image.network(
+                    urlImage,
+                    scale: 1,
+                  ),
+                ),
+              )
+            ),
+      
+            Positioned(
+              bottom: 0,
+              child: Container(
+                width: 250,
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                  tooltip: 'Read',
+                  icon: const Icon(Icons.keyboard_arrow_right, color: Colors.white,),
+                  onPressed: () {
+                    urlLauncher(finalUrl);
+                  },
                 ),
               ),
             )
-          ),
-
-          Positioned(
-            bottom: 0,
-            child: Container(
-              width: 250,
-              alignment: Alignment.bottomRight,
-              child: IconButton(
-                tooltip: 'Read',
-                icon: const Icon(Icons.keyboard_arrow_right, color: Colors.white,),
-                onPressed: () {
-                  urlLauncher(finalUrl);
-                },
-              ),
-            ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
 }
     
+
