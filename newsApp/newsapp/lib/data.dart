@@ -65,7 +65,7 @@ class _DataState extends State<Data> {
       //articles = bruteData['articles'] as Map<dynamic, dynamic>;
       print(articles);
     });*/
-    print(bruteData['articles'].runtimeType);
+  
 
   }
 

@@ -45,11 +45,11 @@ class ArticleView extends StatefulWidget {
 
 class _ArticleViewState extends State<ArticleView> {
 
-  String urlImage = "https://t3n.de/news/wp-content/uploads/2024/07/Eiffelturm-alternativ-1.jpg";
+  String urlImage = "https://smartcdn.gprod.postmedia.digital/financialpost/wp-content/uploads/2024/08/no0809fb-google.jpg";
 
-  String title = "Virtuelle Zeitreise durch Paris: Google Maps zeigt Sehenswürdigkeiten in historischer AR-Optik";
+  String title = "Openstreetmap: Was ihr über die freie Alternative zu Google Maps wissen müsst, description: Google Maps ist und bleibt der Standard in Sachen Navigationslösungen";
 
-  String url = "https://t3n.de/news/virtuelle-zeitreise-paris-google-maps-sehenswuerdigkeiten-historisch-ar-1638436/";
+  String url = "https://t3n.de/news/openstreetmap-google-maps-alternative-1639159/";
 
   String publishedAt = "2021-01-01T00:00:00Z";
 
@@ -101,7 +101,7 @@ class _ArticleViewState extends State<ArticleView> {
               width: 200,
               top:15,
               child: Text(
-                title.length > 80 ? "${title.substring(0, 80)} ... ": title,
+                title.length > 30 ? "${title.substring(0, 30)} ... ": title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize:20.0),
                 maxLines: 3,
@@ -118,13 +118,14 @@ class _ArticleViewState extends State<ArticleView> {
       
             Positioned(
               
-              top: 150,
-              bottom: 20,
+              top: 140,
+              bottom: 30,
               child: Padding(
-                padding: const EdgeInsets.all(25.0),
+                padding: const EdgeInsets.all(5.0),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Image.network(
+                  
                     urlImage,
                     scale: 1,
                   ),
