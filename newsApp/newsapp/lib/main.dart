@@ -47,7 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
        
         title: Text(widget.title),
       ),
-      body:   const ArticleView(),
+      body:   const Column(
+        children: [
+          ArticleView(),
+          //Data(),
+        ],
+      ),
     );
     
   }
