@@ -38,9 +38,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   
-  ClipboardData? data;
-
-
   @override
   Widget build(BuildContext context) {
     
