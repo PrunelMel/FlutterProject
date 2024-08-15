@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:my_translator/main_bloc.dart';
 import 'package:my_translator/main_dropdown_menu.dart';
 import 'package:translator/translator.dart';
+import 'dart:io' show Platform;
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +15,42 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Translator',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white, ),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Translator'),
-    );
+    /*
+      if (Platform.isAndroid) {
+        return MaterialApp(
+          title: 'Translator',
+          theme: ThemeData(
+            
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white, ),
+            useMaterial3: true,
+          ),
+          home: const MyHomePage(title: 'Translator'),
+        );
+      }
+    */
+    if(Platform.isLinux || Platform.isWindows){
+      return MaterialApp(
+        title: 'Translator',
+        theme: ThemeData(
+          
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white, ),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(title: 'Translator'),
+      );
+    }
+    else{
+      return MaterialApp(
+        title: 'Translator',
+        theme: ThemeData(
+          
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white, ),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(title: 'Translator'),
+      );
+    }
+    
   }
 }
 
